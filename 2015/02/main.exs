@@ -17,19 +17,15 @@ defmodule Solution do
   end
 
   # [l, w, h]
-  def calculate_area(dimensions) do
+  def calculate_area([l, w, h]) do
     [
-      2 * Enum.at(dimensions, 0) * Enum.at(dimensions, 1) +
-        2 * Enum.at(dimensions, 1) * Enum.at(dimensions, 2) +
-        2 * Enum.at(dimensions, 0) * Enum.at(dimensions, 2) +
-        Enum.reduce(Enum.take(dimensions, 2), &(&1 * &2)),
-      Enum.reduce(Enum.take(dimensions, 2), &((&1 + &2) * 2)) +
-        Enum.reduce(dimensions, &(&1 * &2))
+      2 * l * w + 2 * w * h + 2 * l * h + l * w,
+      2 * (l + w) + l * w * h
     ]
   end
 
-  def sum(new_areas, acc) do
-    [Enum.at(new_areas, 0) + Enum.at(acc, 0), Enum.at(new_areas, 1) + Enum.at(acc, 1)]
+  def sum([new_area, new_volume], [total_area, total_volume]) do
+    [new_area + total_area, new_volume + total_volume]
   end
 end
 
