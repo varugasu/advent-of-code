@@ -4,6 +4,15 @@ defmodule Solution do
 
     contents
     |> String.graphemes()
+    |> solve_puzzles()
+  end
+
+  defp solve_puzzles(directions) do
+    puzzle_1(directions)
+  end
+
+  def puzzle_1(directions) do
+    directions
     |> Enum.reduce(
       %{x: 0, y: 0, counter: %{"(0, 0)": 1}},
       fn direction, %{x: x, y: y, counter: counter} ->
